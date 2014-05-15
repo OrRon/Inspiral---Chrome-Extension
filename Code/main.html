@@ -1,0 +1,23 @@
+    <div class="item" style="background: url('{{pic.image_url}}') no-repeat center center fixed; -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        width: 100%;
+        height: 100%;">
+        <!-- <div style="height:40%" id="main_message"></div> -->
+        <!-- <input type="text" name="firstname" ng-keyup="$event.keyCode == 13 ? myFunc() : null"> -->
+        <div id="inner">
+  		    <div id="main_message" class="cool_font" >{{message}}</div>
+  		     <div class="time cool_font"><!-- <img src="clock.svg" class="inline_image">  -->{{n | date:'hh:mm:ss a'}}</div>
+        </div>
+        <div id="bottom">
+            <div class="topsite"></div>
+            <div class="topsite"></div>
+            <div class="topsite"></div>
+            <div class="topsite"></div>
+            <div class="topsite"></div>
+        </div>
+        <div id="buy_button" class="cool_font">
+            <a ng-click="openTab(pic.id)">About this image</a> 
+        </div>
+    </div>
