@@ -28,6 +28,15 @@ app.factory('champions', function($http){
                return $http.get('https://api.500px.com/v1/photos?feature=popular&consumer_key=2CaTgmY7w3MTyUQNFnMx7NF1MTw5pm5hmEOLEpCv&image_size=5&rpp=100');
                //return $http.get('https://api.500px.com/v1/photos/search?term=monkey&consumer_key=2CaTgmY7w3MTyUQNFnMx7NF1MTw5pm5hmEOLEpCv&image_size=5&rpp=100sort=times_viewed');
            },
+           getQuote: function() {
+               return $http({
+                method: 'get',
+                url: 'https://api.parse.com/1/classes/quotes',
+                headers: {
+                    'X-Parse-Application-Id': 'J8juSeskSp5Sf59peOl7axRdv5ZMXMhpqVE3BeFT',
+                    'X-Parse-REST-API-Key': 'uMAEXZe8oewE7gWks6oi65pBfka7llh5ozjgGH4t'
+                }})
+           },
            addUser: function(user) {
             return $http({
                 method: 'POST',
@@ -70,14 +79,6 @@ app.controller('MainController', function($scope,$timeout,champions){
     //VAR
     var MAX_RESULTS = 100;
     var TIME_TO_UPDATE = 60 //in minutes
-
-
-    //METHODS
-    $scope.onTimeout = function(){
-        var d = new Date();
-        $scope.n = d.getTime();
-        mytimeout = $timeout($scope.onTimeout,1000);
-    }
     
     $scope.openTab = function(image_id) {
         chrome.tabs.create({url: "http://500px.com/photo/"+image_id});
@@ -95,29 +96,15 @@ app.controller('MainController', function($scope,$timeout,champions){
 
     
     var d = new Date();
-    $scope.n = d.getTime();
-
-    var curr_hour = d.getHours();
-    var curr_time = curr_hour + ":" + '00';
-
-    var morning_limit = '11:00';
-    var night_limit = '19:00';
-    $scope.message = "Have a good day";
-    if (morning_limit >= curr_time) {
-      $scope.message = "Have a good morning";
-    }  
-    if (night_limit >= curr_time && curr_time > morning_limit) {
-      $scope.message = "Have a good day";
-    }
-    if (night_limit < curr_time && curr_time ) {
-      $scope.message = "Have a good night";
-    }
+    
 
 
+    champions.getQuote()
+    .success(function(data){
+        $scope.message = '"' + data.results[0].line + '"'; 
+        $scope.n = data.results[0].author;
+    });
 
-
-
-    $timeout($scope.onTimeout,1000);
 
 
     //check last time updated
