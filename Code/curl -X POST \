@@ -1,0 +1,18 @@
+curl -X POST \
+  -H "X-Parse-Application-Id: JmHKz9Zcrrp8FN9rP9nXToPhfNYnSa2LO3nrRjZT" \
+  -H "X-Parse-REST-API-Key: fRYCXLDmdk3YfWPEa89gA9Cn3fZegYWOW5xbhq9X" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "where": {
+          "udid": "5387a73a62902c0f12000009"
+        },
+        "data": {
+            "aps": {
+                 "badge": 10,
+                 "alert": "Look at this cool item!",
+                 "sound": "cat.caf"
+            },
+            "itemID": "1234"
+        }
+      }' \
+  https://api.parse.com/1/push

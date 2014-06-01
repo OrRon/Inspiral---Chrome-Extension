@@ -1,7 +1,7 @@
 {
   "name": "Inspiral, inspiring new tab page",
   "description": "Get inspired by amazing things every time you open a new tab",
-  "version": "0.10",
+  "version": "0.11",
   "incognito": "split",
   "chrome_url_overrides": {
     "newtab": "blank.html"

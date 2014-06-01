@@ -99,11 +99,6 @@ app.controller('MainController', function($scope,$timeout,champions){
     
 
 
-    champions.getQuote()
-    .success(function(data){
-        $scope.message = '"' + data.results[0].line + '"'; 
-        $scope.n = data.results[0].author;
-    });
 
 
 
