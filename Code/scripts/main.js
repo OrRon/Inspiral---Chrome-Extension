@@ -25,7 +25,8 @@ app.factory('champions', function($http){
 
        return {
            getChampions: function() {
-               return $http.get('https://api.500px.com/v1/photos?feature=popular&consumer_key=2CaTgmY7w3MTyUQNFnMx7NF1MTw5pm5hmEOLEpCv&image_size=5&rpp=100&exclude=nude');
+                return $http.get('https://api.500px.com/v1/photos?feature=popular&consumer_key=2CaTgmY7w3MTyUQNFnMx7NF1MTw5pm5hmEOLEpCv&image_size=5&rpp=100&exclude=Nude,People,Fashion');
+               //return $http.get('https://api.500px.com/v1/photos?feature=popular&consumer_key=2CaTgmY7w3MTyUQNFnMx7NF1MTw5pm5hmEOLEpCv&image_size=5&rpp=100&only=10,11,5,1,9,15,16,20,2,24,23,3,8,12,18,19,17,6,21,26,13,22,27,25');
                //return $http.get('https://api.500px.com/v1/photos/search?term=monkey&consumer_key=2CaTgmY7w3MTyUQNFnMx7NF1MTw5pm5hmEOLEpCv&image_size=5&rpp=100sort=times_viewed');
            },
            getQuote: function() {
